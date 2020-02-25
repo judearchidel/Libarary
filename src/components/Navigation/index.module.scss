@@ -1,0 +1,28 @@
+@mixin rowdisplay {
+    display: flex;
+    flex-flow: row;
+}
+
+.NavBar{
+    height: 56px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #dedede;
+    @include rowdisplay();
+    justify-content: space-between;
+    .NavBarUser{
+    @include rowdisplay();
+     margin: 5px;
+        .Icon{
+            font-size: 40px;
+        }
+    }
+}
+
+.Navigation {
+    list-style: none;
+    @include rowdisplay();
+    justify-content: flex-end;
+}

@@ -1,22 +1,28 @@
 import React from 'react';
-import {Route , Switch} from 'react-router-dom';
+import {Route , Switch, Redirect} from 'react-router-dom';
 import  {AuthPage} from './containers/Auth/index';
 import {bookShelf} from './containers/BookShelf/index'
 import './App.scss';
 import { useSelector } from 'react-redux';
+import { Layout } from './components/Layout/Layout';
+import { Bookdetails } from './containers/Books/index';
+import { MemberDetails } from './containers/Member/index';
 
 function App() {
   const authenticated = useSelector(state => state.auth.authenticated)
-  
+  console.log(authenticated)
   let routes = ( <Switch>
-    <Route path='/' exact component={AuthPage} />    
+    <Route path='/' component={AuthPage} />    
     </Switch>
     );
   if(authenticated)
   {
-  routes = ( <Switch>
-      <Route path='/' exact component={bookShelf} />    
-      </Switch>
+  routes = ( <Layout><Switch>
+      <Route path='/' exact component={bookShelf} /> 
+      <Route path='/books' exact component={Bookdetails} />
+      <Route path='/member' exact component={MemberDetails} />
+      <Redirect to='/'/>
+      </Switch></Layout>
       )
     }
  

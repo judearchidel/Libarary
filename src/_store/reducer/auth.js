@@ -2,7 +2,8 @@ import * as actionTypes from '../action/actionTypes';
 
 const intialState ={
     authenticated: false,
-    error: null
+    error: null,
+    userid: null
 };
 
 export const authreducer =(state = intialState, action) => {
@@ -11,13 +12,15 @@ export const authreducer =(state = intialState, action) => {
         return {
             ...state,
             authenticated: action.authenticate,
-            error: null
+            error: null,
+            userid: 'Librarian'
         }
         case actionTypes.AUTH_FAIL:
         return {
             ...state,
             authenticated: action.authenticate,
-            error: 'INVALID PASSWORD OR EMAIL'
+            error: 'INVALID PASSWORD OR EMAIL',
+            userid: null
         }
         default:
             return state
