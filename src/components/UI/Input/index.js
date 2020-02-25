@@ -1,31 +1,36 @@
 import React from 'react';
-
+import classes from './index.module.scss';
 
 export const Input = (props) => {
 
+    const {isValid,inputChanged,inputType,change,value}={...props}
     let validationText = null;
-    if(!props.isValid && props.inputchanged){
-        validationText =<p>enter a valid {props.inputType}</p>
+    if(!isValid && inputChanged){
+        validationText =<p className={classes.validationText}>Enter a valid {inputType}</p>
     }
-    const displayinput = () => {
-                         switch (props.inputType) {
+    const renderInput = (type)=>{
+        return (
+        <div className={classes.Input}>
+            <span className={classes.floatingLabel}>{inputType} </span>    
+            <input type={type} placeholder=''
+                value={value}
+                onChange={(event)=>change(event,inputType)}></input>
+            {validationText}
+        </div>);
+    }
+    const displayInputs = () => {
+                         switch (inputType) {
                             case 'Email':
-                            return <input type='email' placeholder='email' 
-                            value={props.value}
-                            onChange={(event)=>props.change(event,props.inputType)}></input>    
+                            return renderInput('email');   
                             case 'Password':
-                            return <input type='password' placeholder='password' 
-                            value={props.value}
-                            onChange={(event)=>props.change(event,props.inputType)}></input>        
+                            return renderInput('password');        
                             default:
                                 return null;
                             }
                     }
-    return  (
-        <div>
-        {displayinput()}
-        {validationText}
-        </div>)
-            ;
+    
+    return displayInputs();
+       
+       
             
 }

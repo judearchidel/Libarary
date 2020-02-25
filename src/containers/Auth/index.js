@@ -4,10 +4,11 @@ import {Button} from '../../components/UI/Button/index';
 import shortid from 'shortid';
 import { useSelector,connect } from 'react-redux';
 import * as actions from '../../_store/action/auth';
+import classes from './index.module.scss';
  
 
-const AuthPage = (props) => {
-const authentic = useSelector(state => state.auth.authenticated);
+const Auth = (props) => {
+const error = useSelector(state=> state.auth.error)
 const intialAuthFormValues = {
     Email:{
         key: shortid.generate(),
@@ -31,28 +32,29 @@ const intialAuthFormValues = {
     }
 }
 const [loginInputs,setLoginInputs] = useState(intialAuthFormValues);
+
 const checkValidity = (value, validations) =>{
-                    let isvalid= false;
-                    if(validations.required){
-                        isvalid = value.trim() !== '';
-                        if(validations.condition){
-                                isvalid= validations.condition.test(value)
-                            }
-                        }
-                    return isvalid;
-                }
+    let isvalid= false;
+    if(validations.required){
+        isvalid = value.trim() !== '';
+        if(validations.condition){
+                isvalid= validations.condition.test(value)
+            }
+        }
+    return isvalid;
+}
 const onInputChangeHandler = (e,inputType)=>{
-                        const newAuthFormValues= {
-                        ...loginInputs,
-                        [inputType]:{
-                        ...loginInputs[inputType],
-                        value: e.target.value,
-                        valid: checkValidity(e.target.value,loginInputs[inputType].validation),
-                        inputchanged: true
-                        }
-                    }
-                    setLoginInputs(newAuthFormValues);
-                } 
+    const newAuthFormValues= {
+        ...loginInputs,
+        [inputType]:{
+        ...loginInputs[inputType],
+        value: e.target.value,
+        valid: checkValidity(e.target.value,loginInputs[inputType].validation),
+        inputchanged: true
+        }
+    }
+    setLoginInputs(newAuthFormValues);
+} 
 
 const  onAuthSubmitHandler = (event)=>{
     event.preventDefault();
@@ -60,28 +62,40 @@ const  onAuthSubmitHandler = (event)=>{
 }
 
 const dispalyForm =()=>{ 
-                        let formdeatils=[];
-                        for (let el in loginInputs){
-                            formdeatils.push({
-                                inputType: el,
-                                config: loginInputs[el]
-                            })
-                        }
-                    const mapformInputs = formdeatils.map((el,index)=>{
-                        return <Input key={el.config.key} inputType={el.inputType} change={onInputChangeHandler} 
-                        isValid={el.config.valid}  inputchanged={el.config.inputchanged} value={el.config.value}/>
-                    }) 
-                    const form = (
-                         <form onSubmit={onAuthSubmitHandler}>
-                                {mapformInputs}
-                                <Button type='submit'>Log IN</Button>
-                        </form>
-                    )
-                    return form;
-                }
+    let formDetails=[];
+    for (let el in loginInputs){
+        formDetails.push({
+            inputType: el,
+            config: loginInputs[el]
+        })
+    }
+    let validityOfEachInput= [];
+    const mapFormInputs = formDetails.map((el,index)=>{
+        validityOfEachInput.push(el.config.valid);
+        return <Input key={el.config.key} inputType={el.inputType} 
+                change={onInputChangeHandler} 
+                isValid={el.config.valid}  
+                inputChanged={el.config.inputchanged} 
+                value={el.config.value}/>
+    }) 
+   const isLoginButtonActive= validityOfEachInput.every(el=>{
+        return el===true;
+    })
+    const form = (
+        <form onSubmit={onAuthSubmitHandler} className={classes.AuthForm}>
+            <div>
+                <h1>Welcome</h1>
+                <p className={classes.errorDisplay}>{error}</p>
+            </div>
+            {mapFormInputs}
+            <Button type='submit' isEnable={isLoginButtonActive}>LOGIN</Button>
+        </form>
+    )
+    return form;
+}
             
 
-    return (<div>
+    return (<div className={classes.Auth}>
                 {dispalyForm()}
             </div>)
 }
@@ -91,4 +105,5 @@ const mapDispatchProps = (dispatch) => {
         onAuth: (email,Password) => dispatch(actions.auth(email,Password)),
     };
 };
-export default connect(null,mapDispatchProps)(AuthPage);
+
+export const AuthPage=connect(null,mapDispatchProps)(Auth);

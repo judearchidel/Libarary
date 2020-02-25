@@ -1,0 +1,31 @@
+$background: #4287f5;
+
+.Input
+{
+    text-align: left;
+    margin: 10px;
+    width: 100%;
+    input{
+        width: 90%;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid black;
+        margin: 10px auto;
+        background: transparent;
+        transition: all 0.3s ease-out;
+        &:focus{
+            outline: none;
+            border-bottom: 2px solid $background;
+            padding-top: 20px;   
+        }
+    }
+.floatingLabel {
+    padding-bottom: 2px;
+    color: #c2c2c2;
+    }
+.validationText{
+    font-size: 0.8rem;
+    margin: 0;
+    color: #c20000;
+    }
+}

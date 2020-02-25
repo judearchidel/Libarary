@@ -1,0 +1,19 @@
+.loginBtn{
+    width: 50%;
+    margin: 20px;
+    background: linear-gradient(to right,#4287f5, #42f59e);
+    border-radius: 10px;
+    height: 30px;
+    opacity: 1;
+    transition: all 0.5s ease-out;
+    &:focus{
+        outline: none;      
+    }
+    &:hover{
+        background: linear-gradient(to left,#4287f5, #42f59e);
+    }
+    &:disabled{
+        opacity: 0.8;
+    }
+
+}
