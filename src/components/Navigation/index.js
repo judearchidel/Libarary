@@ -13,8 +13,7 @@ return <div className={classes.NavBar}>
         <p>{userid}</p>
         </div>
         <ul className={classes.Navigation}>
-            <NavigationItem link='/'>Shelf</NavigationItem>
-            <NavigationItem link='/books'>Books</NavigationItem>
+            <NavigationItem link='/'>Book Shelf</NavigationItem>
             <NavigationItem link='/member'>Member</NavigationItem>
             <NavigationItem link='/logout'>Logout</NavigationItem>
         </ul>

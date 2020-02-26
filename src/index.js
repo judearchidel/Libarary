@@ -7,9 +7,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
 import {authreducer} from './_store/reducer/auth'
+import { bookReducer } from './_store/reducer/book';
 
 const rootreducer = combineReducers({
-auth: authreducer   });
+auth: authreducer,
+book: bookReducer   });
 
 const store= createStore(rootreducer)
 

@@ -10,7 +10,7 @@ import classes from './index.module.scss';
 const Auth = (props) => {
 const error = useSelector(state=> state.auth.error)
 const intialAuthFormValues = {
-    Email:{
+    email:{
         key: shortid.generate(),
         value: '',
         validation:{
@@ -20,7 +20,7 @@ const intialAuthFormValues = {
         valid: false,
         inputchanged: false
     },
-    Password:{
+    password:{
         key: shortid.generate(),
         value:'',
         validation:{
@@ -58,7 +58,7 @@ const onInputChangeHandler = (e,inputType)=>{
 
 const  onAuthSubmitHandler = (event)=>{
     event.preventDefault();
-  props.onAuth(loginInputs['Email'].value,loginInputs['Password'].value);
+  props.onAuth(loginInputs['email'].value,loginInputs['password'].value);
 }
 
 const dispalyForm =()=>{ 
@@ -72,7 +72,7 @@ const dispalyForm =()=>{
     let validityOfEachInput= [];
     const mapFormInputs = formDetails.map((el,index)=>{
         validityOfEachInput.push(el.config.valid);
-        return <Input key={el.config.key} inputType={el.inputType} 
+        return <Input key={el.config.key} inputType={el.inputType} inputName={el.inputType}
                 change={onInputChangeHandler} 
                 isValid={el.config.valid}  
                 inputChanged={el.config.inputchanged} 
