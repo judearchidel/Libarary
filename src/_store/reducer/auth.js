@@ -22,6 +22,13 @@ export const authreducer =(state = intialState, action) => {
             error: 'INVALID PASSWORD OR EMAIL',
             userid: null
         }
+        case actionTypes.AUTH_LOGOUT:
+            return{
+                ...state,
+                authenticated: false,
+                error: null,
+                userid:null
+            }
         default:
             return state
     }

@@ -11,6 +11,12 @@ export const auth=(email,password)=>{
     return{
             type:actionTypes.AUTH_FAIL,
             authenticate:authenticate
+         }
     }
-    }
+}
+
+export const authLogOut = ()=>{
+        return{
+                type: actionTypes.AUTH_LOGOUT
+        }
 }

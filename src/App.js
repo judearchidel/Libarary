@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { Layout } from './components/Layout/Layout';
 import { Bookdetails } from './containers/Books/index';
 import { MemberDetails } from './containers/Member/index';
+import {LogOut} from './containers/Auth/Logout/index';
 
 function App() {
   const authenticated = useSelector(state => state.auth.authenticated)
@@ -21,6 +22,7 @@ function App() {
       <Route path='/' exact component={bookShelf} /> 
       <Route path='/books' exact component={Bookdetails} />
       <Route path='/member' exact component={MemberDetails} />
+      <Route path='/logout' exact component={LogOut} />
       <Redirect to='/'/>
       </Switch></Layout>
       )

@@ -16,6 +16,7 @@ return <div className={classes.NavBar}>
             <NavigationItem link='/'>Shelf</NavigationItem>
             <NavigationItem link='/books'>Books</NavigationItem>
             <NavigationItem link='/member'>Member</NavigationItem>
+            <NavigationItem link='/logout'>Logout</NavigationItem>
         </ul>
     </div>
 }
