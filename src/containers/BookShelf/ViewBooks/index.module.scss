@@ -1,0 +1,23 @@
+.viewBooks{
+    margin: 10px;
+.viewBooksTable{
+    width: 100%;
+    display: table;
+.bookTable{
+    width: 100%;
+    border-collapse: collapse;
+   .bookTableHead
+    th{
+        height: 20px;
+        padding: 10px;
+        border: 1px solid black;
+    }
+    .bookTableBody{
+    td{
+        height: 10px;
+        border: 1px solid black;
+    }
+    }
+}
+}
+}

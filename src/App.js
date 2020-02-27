@@ -20,7 +20,7 @@ function App() {
   {
   routes = ( <Layout><Switch>
       <Route path='/book' component={bookShelf} /> 
-      <Route path='/member'  exact component={MemberDetails} />
+      <Route path='/member'  component={MemberDetails} />
       <Route path='/logout' exact component={LogOut} />
       <Redirect from='/' to='/book'/>
       </Switch></Layout>

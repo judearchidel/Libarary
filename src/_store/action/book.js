@@ -6,3 +6,16 @@ return {
         bookData: booksData
     }
 }
+
+export const bookRemove = (index)=>{
+    return{
+        type:actionTypes.BOOK_REMOVE,
+        index: index
+    }
+}
+export const reduceBookCount = (index)=>{
+    return{
+        type:actionTypes.BOOK_REDUCE,
+        index: index
+    }
+}

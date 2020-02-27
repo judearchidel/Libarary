@@ -9,36 +9,36 @@ import * as actions from '../../../_store/action/book';
 const InaddBook= (props)=>{
 
 const intialBookInputs= {
-    bookName: {
+    BookName: {
         key: shortid.generate(),
         type: 'text',
         value: '',
         required: true
     },
-    count:{
+    Count:{
         key: shortid.generate(),
         type: 'number',
         value: '',
         required: true
     },
-    Authour:{
+    Author:{
         key: shortid.generate(),
         type: 'text',
         value: '',
         required: true
     },
-    genre: {
+    Genre: {
         key: shortid.generate(),
         type: 'text',
         value: '',
     },
-    discription:{
+    Discription:{
         key: shortid.generate(),
         type: 'text',
         value: '',
         required: true
     },
-    price:{
+    Price:{
         key: shortid.generate(),
         type: 'number',
         value: '',
@@ -71,7 +71,8 @@ const dispalyFormInputs = ()=>{
    const mapInputofBook = formDetails.map(el=>{
        return <Input key={el.config.key} inputType={el.config.type} 
         value={el.config.value} 
-        change={onInputChangeHandler} inputName={el.inputName}></Input>
+        change={onInputChangeHandler} inputName={el.inputName}
+        required={el.config.required}></Input>
    }) 
 
    return mapInputofBook;
@@ -84,15 +85,21 @@ const rearrangeImputs=()=>{
             [el]: bookInputs[el].value
         } 
     }
+    finalBookInputs={
+        ...finalBookInputs,
+        id: shortid.generate(),
+        issueCount: 0
+    }
     return finalBookInputs;
 }
 
 
 const submitAddBookhandler = (e)=>{
-    e.preventDefault();
-    
+    e.preventDefault();    
 props.onAddBook(rearrangeImputs());
+setBookInputs(intialBookInputs);
 }
+
 const displayAddform=()=>{
     const form = <form onSubmit={submitAddBookhandler}>
                     {dispalyFormInputs()}
@@ -102,7 +109,8 @@ const displayAddform=()=>{
 }
 
 
-    return (<div className={classes.AddForm}>
+return (<div className={classes.AddForm}>
+            <h1> Add Book</h1>
             {displayAddform()}
         </div>)
 }

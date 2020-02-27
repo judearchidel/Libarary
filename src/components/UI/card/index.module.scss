@@ -1,14 +1,12 @@
 .Card {
-margin: 10px;
+background-color: whitesmoke;
 .CardBox{
-width: 150px;
+ width: auto;   
 height: auto;
-margin: 10px;
-padding: 10px;
-border-style: double;
-
+border-bottom: 1px solid grey;
     .Icon{
-        font-size: 5rem;
+        padding-top: 5px;
+        font-size: 1rem;
     }
 }
 }
