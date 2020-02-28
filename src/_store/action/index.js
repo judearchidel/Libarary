@@ -1,9 +1,13 @@
 export {
 bookAdd,
 bookRemove,
-reduceBookCount
+reduceBookCount,
+addIssuecount,
+reduceIssueCount
 } from './book';
 export{
 addMemeber,
-removeMember
+removeMember,
+memberIssue,
+memberReturn
 } from './member';

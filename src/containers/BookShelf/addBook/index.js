@@ -46,18 +46,18 @@ const intialBookInputs= {
     }
 }
 
-const [bookInputs,setBookInputs]= useState(intialBookInputs);
-let isAddButtonactive= true;
-const onInputChangeHandler=(e,inputName)=>{
+const [bookInputs,setBookInputs] = useState(intialBookInputs);
+let isAddButtonactive            = true;
 
-const newBookInputs={
-    ...bookInputs,
-    [inputName]:{
-    ...bookInputs[inputName],
-    value: e.target.value
+const onInputChangeHandler=(e,inputName)=>{
+    const newBookInputs={
+        ...bookInputs,
+        [inputName]:{
+        ...bookInputs[inputName],
+        value: e.target.value
+        }
     }
-}
-setBookInputs(newBookInputs)
+    setBookInputs(newBookInputs)
 }
 
 const dispalyFormInputs = ()=>{

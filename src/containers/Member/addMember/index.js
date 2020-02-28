@@ -23,6 +23,7 @@ const intialMemberInputs = {
     type: {
         key: shortid.generate(),
         type: 'select',
+        value:'student',
         options: {
             options1: 'student',
             options2: 'employee'
@@ -81,14 +82,17 @@ const rearrangeImputs=()=>{
     finalMemberdata={
         ...finalMemberdata,
         id: shortid.generate(),
-        issuedBooks: 0
+        issuedBooks: {
+            count: 0,
+            bookids:[]
+        }
     }
     return finalMemberdata;
 }
 const submitAddMemberhandler =(e)=>{
     e.preventDefault();
     onAddMember(rearrangeImputs());
-    return null
+    setMemberInput(intialMemberInputs);
 }
 
 const displayAddform=()=>{
@@ -99,7 +103,7 @@ const displayAddform=()=>{
     return form;
 }
 
-    return (<div>
+    return (<div className={classes.memberAddForm}>
             <h1>Add Memeber</h1>
                 {displayAddform()}
         </div>)

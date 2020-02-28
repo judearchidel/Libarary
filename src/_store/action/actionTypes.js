@@ -10,3 +10,5 @@ export const BOOK_REDUCE = 'BOOK_REDUCE';
 
 export const MEMBER_ADD = 'MEMBER_ADD';
 export const MEMBER_REMOVE = 'MEMBER_REMOVE';
+export const MEMBER_ISSUE = 'MEMBER_ISSUE';
+export const MEMBER_RETURN = 'MEMBER_RETURN';
