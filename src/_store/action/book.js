@@ -27,7 +27,8 @@ export const addIssuecount = (index)=>{
 }
 
 export const reduceIssueCount = (index)=>{
-   return{
+  
+    return{
         type:actionTypes.BOOK_RETURN,
         index: index
 }    

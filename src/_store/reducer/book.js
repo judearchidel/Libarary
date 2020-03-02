@@ -16,16 +16,14 @@ export const bookReducer = (state= intialState, action)=>{
         case actionTypes.BOOK_REDUCE:
             newState = [...state]
             newState[action.index].Count -= 1;
-            console.log(newState)
             return newState
         case actionTypes.BOOK_ISSUE:
             newState =[...state]
-            console.log(action.index);
             newState[action.index].issueCount += 1;
             return newState
         case actionTypes.BOOK_RETURN:
             newState =[...state]
-            newState[action.index].issueCount += 1;
+            newState[action.index].issueCount -= 1;
             return newState
         default:
             return state

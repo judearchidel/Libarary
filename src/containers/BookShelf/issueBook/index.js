@@ -7,20 +7,24 @@ import * as action from '../../../_store/action/index';
 import { connect } from 'react-redux';
 
 export const InitialIssueBook= (props)=>{
-    const {onIssueBook,onIssueMember}        ={...props}
-    const [bookToIssue,setBookToIssue]       = useState('');
-    const [membertoIssue,setMembertoIssue]   = useState(null);
-    const [selectedBook, setSelectedBook]    = useState(false);
-    const [memberIndex,setMemberIndex]       = useState(null);
-    const [bookIndex,setBookIndex]           = useState(null);
+    const initialState = {
+        bookToIssue: '',
+        bookIndex:'',
+        membertoIssue:'',
+        memberIndex:'',
+        isBookSelected: false
+    }
+
+    const [issueBookState,setIssueBookState] = useState(initialState);
+    const {onIssueBook,onIssueMember}        = {...props};
 
 const displayBook=()=>{
     let show= null;
-    if(bookToIssue){
+    if(issueBookState.bookToIssue){
         show =  <SearchCard>
-                    <p>Book Name: {bookToIssue.BookName}</p>
-                    <p>Count : {bookToIssue.Count}</p>
-                    {selectedBook? dispalyMemeberSearch() 
+                    <p>Book Name: {issueBookState.bookToIssue.BookName}</p>
+                    <p>Count : {issueBookState.bookToIssue.Count}</p>
+                    {issueBookState.isBookSelected? dispalyMemeberSearch() 
                     :<button onClick={()=>checkBookAvailabilty()}>select Book</button>}
                 </SearchCard>
         }
@@ -28,42 +32,52 @@ const displayBook=()=>{
     }
 
 const checkBookAvailabilty = ()=>{
-    const isBookAvailable = bookToIssue.Count >= bookToIssue.issueCount;    
+    const isBookAvailable = issueBookState.bookToIssue.Count >= issueBookState.bookToIssue.issueCount;    
     if(isBookAvailable){
-            setSelectedBook(true);   
+            setIssueBookState({
+                ...issueBookState,
+                isBookSelected: true
+            })   
         }else{
             alert("this book is out of stock")
         }
     }
 
 const searchMemberResult = (result,index)=>{
-        setMemberIndex(index);
-        setMembertoIssue(result)
+    setIssueBookState({
+        ...issueBookState,
+        membertoIssue: result,
+        memberIndex: index
+    })   
     }
 
 const searchBookResult = (result,index)=>{
-        setBookIndex(index);
-        setBookToIssue(result)
+    setIssueBookState({
+        ...issueBookState,
+        bookToIssue: result,
+        bookIndex: index
+    })    
     }
 
 const displayMemeber= ()=>{
        let show= [];
-        if(membertoIssue){
+        if(issueBookState.membertoIssue){
             show=<div>
-                    <p>{membertoIssue.name}</p>
-                    <p>{membertoIssue.age}</p>
-                    <p>{membertoIssue.id}</p>
-                    <p>{membertoIssue.issuedBooks.count}</p>
+                    <p>{issueBookState.membertoIssue.name}</p>
+                    <p>{issueBookState.membertoIssue.age}</p>
+                    <p>{issueBookState.membertoIssue.id}</p>
+                    <p>{issueBookState.membertoIssue.issuedBooks.count}</p>
                     <button onClick={()=>ckeckMemberIsuueLimit()}>Issue Book</button>
                 </div>
         }
         return show;
     }
 const ckeckMemberIsuueLimit = ()=>{
-    const isMemberEligibleToIsuue = (membertoIssue.issuedBooks.count < 2);
+    const isMemberEligibleToIsuue = (issueBookState.membertoIssue.issuedBooks.count < 2);
     if(isMemberEligibleToIsuue){
-        onIssueBook(bookIndex);
-        onIssueMember(memberIndex,bookToIssue.id)
+        onIssueBook(issueBookState.bookIndex);
+        onIssueMember(issueBookState.memberIndex,issueBookState.bookToIssue.id)
+        setIssueBookState(initialState);
     }else{
         alert("you can keep only 2 books")
     }
