@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 export const ViewAllMembers = ()=>{
     const memberdata = useSelector(state=>state.member);
-    
+    const isMembersAvailable = memberdata.length;    
 
 
     const displayMemberList = ()=>{
@@ -33,19 +33,16 @@ export const ViewAllMembers = ()=>{
                         {memberListRow}
                     </tbody>
                 </table>
-        
+              
     }
-
-
-
-
-
-
+    const noMemberToDispaly = ()=>{
+        return <p>Plaease add some members</p>
+    }
 
     return( <div>
             <h1>Member List</h1>
-             <div>
-                {displayMemberList()}
+             <div className={classes.viewTable}>
+                {isMembersAvailable?displayMemberList():noMemberToDispaly()}
              </div>   
             </div>)
     }

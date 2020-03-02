@@ -16,11 +16,12 @@ const initialState= {
 const [returnState,setReturnState]                      = useState(initialState); 
 const bookList                                          = useSelector(state=>state.book);
 const {onBookReturnBookAction,onBookReturnMemberAction} = {...props}
+
 const memberSearchResult = (result, index)=>{
     setReturnState({...returnState,
                 memberToreturn: result,
-                memberIndex: index }
-    )
+                memberIndex: index 
+            })
 }
 
 const displaySearchresult= ()=>{

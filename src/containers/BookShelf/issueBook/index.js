@@ -7,7 +7,7 @@ import * as action from '../../../_store/action/index';
 import { connect } from 'react-redux';
 
 export const InitialIssueBook= (props)=>{
-    const initialState = {
+const initialState = {
         bookToIssue: '',
         bookIndex:'',
         membertoIssue:'',
@@ -15,11 +15,11 @@ export const InitialIssueBook= (props)=>{
         isBookSelected: false
     }
 
-    const [issueBookState,setIssueBookState] = useState(initialState);
-    const {onIssueBook,onIssueMember}        = {...props};
+const [issueBookState,setIssueBookState] = useState(initialState);
+const {onIssueBook,onIssueMember}        = {...props};
 
 const displayBook=()=>{
-    let show= null;
+    let show= <p>No books found</p>;
     if(issueBookState.bookToIssue){
         show =  <SearchCard>
                     <p>Book Name: {issueBookState.bookToIssue.BookName}</p>

@@ -1,0 +1,24 @@
+.viewTable{
+    color: #333;
+    font-weight: 400;
+    font-size: 16px;
+    align-items: center;
+    table{
+        width: 100%;
+    thead th {
+        background: #35D380;
+        color: #fff;
+        font-weight: initial;
+    }
+    tr { 
+        background: #f1f1f1; 
+        &:nth-child(2n) { 
+            background: #e0e0e0; 
+        }
+    }  
+    td,th {
+        text-align: left;
+        padding: 24px;
+    }
+    }
+}

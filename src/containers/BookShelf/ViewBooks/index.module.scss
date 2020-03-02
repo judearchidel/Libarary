@@ -1,23 +1,32 @@
 .viewBooks{
     margin: 10px;
 .viewBooksTable{
-    width: 100%;
-    display: table;
-.bookTable{
-    width: 100%;
-    border-collapse: collapse;
-   .bookTableHead
-    th{
-        height: 20px;
-        padding: 10px;
-        border: 1px solid black;
+    table{
+        width: 100%;
+        margin-top: 10px;
+    thead th {
+        background: #35D380;
+        color: #fff;
+        font-weight: initial;
+      }
+      
+      tr { background: #f1f1f1; }
+      
+      tr:nth-child(2n) { background: #e0e0e0; }
+      
+      th, td {
+        text-align: left;
+        padding: 24px;
+      }
     }
-    .bookTableBody{
-    td{
-        height: 10px;
-        border: 1px solid black;
+    .searchBar{
+      width: 40%;
+      margin: auto;
     }
+    .searchResult{
+      width: 60%;
+      margin: auto;
+      margin-top: 10px;
     }
-}
 }
 }

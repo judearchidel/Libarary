@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route , Switch, Redirect} from 'react-router-dom';
 import  {AuthPage} from './containers/Auth/index';
-import {bookShelf} from './containers/BookShelf/index'
+import {BookShelf} from './containers/BookShelf/index'
 import './App.scss';
 import { useSelector } from 'react-redux';
 import { Layout } from './components/Layout/Layout';
@@ -19,7 +19,7 @@ function App() {
   if(authenticated)
   {
   routes = ( <Layout><Switch>
-      <Route path='/book' component={bookShelf} /> 
+      <Route path='/book' component={BookShelf} /> 
       <Route path='/member'  component={MemberDetails} />
       <Route path='/logout' exact component={LogOut} />
       <Redirect from='/' to='/book'/>
