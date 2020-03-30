@@ -24,8 +24,8 @@ export const MemberSearch = (props) =>{
     },[memberSearchValue,memberList,memberTodispay])
 
    return(<SearchCard>
-                <label>Search by Name</label>
-                <input type='text' ref={inputref} 
+                <label>Search by Name : </label>
+                <input type='text' className={classes.input} ref={inputref} 
                 onChange={(event)=>setMemberSearchValue(event.target.value)}/>
             </SearchCard>)
 }

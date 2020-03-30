@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SearchCard } from "../../../components/UI/SearchCard";
 import classes from './index.module.scss';
 import shortid from 'shortid';
 import { Input } from '../../../components/UI/Input';
@@ -109,10 +110,16 @@ const displayAddform=()=>{
 }
 
 
-return (<div className={classes.AddForm}>
-            <h1> Add Book</h1>
-            {displayAddform()}
-        </div>)
+return (
+    
+        <div className={classes.AddForm}>
+            <SearchCard>
+                <h1> Add Book</h1>
+                {displayAddform()}
+            </SearchCard>    
+        </div>
+   
+    )
 }
 
 const mapDispatchToProps = (dispatch)=>{

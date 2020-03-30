@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {MemberSearch} from '../../Member/memberSearch/index';
 import * as actions from '../../../_store/action/index';
 import { useSelector, connect } from 'react-redux';
+import classes from './index.module.scss';
+import { Hoc } from '../../../hoc/hoc';
 
 
 export const InitialReturnBook= (props)=>{
@@ -29,19 +31,19 @@ const displaySearchresult= ()=>{
     if(returnState.memberToreturn){
         if(returnState.memberToreturn.issuedBooks.count > 0){
             issuedBookIds = returnState.memberToreturn.issuedBooks.bookids.map((el,index) =>{
-                return <div key={el+index}>
-                <p >{el}</p>
+                return <div key={index+el} className={classes.returnMemBook}>
+                <p>{index+1}: Book Id:{el}</p>
                 <button onClick={()=>selectBook(el,index)}>Select Book</button>
-                {displaySelectedBook()}
                 </div>
             })
         }else {
-            issuedBookIds = <p>NO books Issued</p>
+            issuedBookIds = <p>No Books Issued</p>
         }  
-    return <div>
-                <p>{returnState.memberToreturn.name}</p>
-                <p>{returnState.memberToreturn.id}</p>
-                {issuedBookIds}  
+    return <div className={classes.returnMember}>
+                <p>Name: {returnState.memberToreturn.name}</p>
+                <p>Member ID: {returnState.memberToreturn.id}</p>
+                {issuedBookIds}
+                {displaySelectedBook()}  
             </div>
     }
 }
@@ -61,11 +63,11 @@ setReturnState({...returnState,
 const displaySelectedBook=()=>{
 let book= null;
 if(returnState.bookToReturn){
-book = <div>
-                <p>{returnState.bookToReturn.BookName}</p>
-                <p>{returnState.bookToReturn.Author}</p>
-                <p>{returnState.bookToReturn.id}</p>
-                <p>{returnState.bookToReturn.Price}</p>
+book = <div className={classes.selectedBook}>
+                <p>Book name: {returnState.bookToReturn.BookName}</p>
+                <p>Author:  {returnState.bookToReturn.Author}</p>
+                <p>Book ID: {returnState.bookToReturn.id}</p>
+                <p>Price: {returnState.bookToReturn.Price}</p>
                 <button onClick={()=>returnBookd()}>confirm Return</button>    
 </div>
 }
@@ -78,11 +80,14 @@ onBookReturnMemberAction(returnState.memberIndex,returnState.bookidIndex);
 setReturnState(initialState);
 }
 
-    return (<div>
-        <p>return books</p>
-        <MemberSearch memberTodispay={memberSearchResult}></MemberSearch>
-        {displaySearchresult()}
-        </div>)
+return (
+        <Hoc>
+            <h3>Return books</h3>
+            <div className={classes.returnSearch}>    
+                <MemberSearch memberTodispay={memberSearchResult}></MemberSearch>    
+            </div>
+            {displaySearchresult()}
+        </Hoc>)
 }
 
 const mapDispatchToProps = (dispatch)=>{

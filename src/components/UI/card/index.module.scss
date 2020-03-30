@@ -1,12 +1,26 @@
-.Card {
-background-color: whitesmoke;
-.CardBox{
- width: auto;   
-height: auto;
-border-bottom: 1px solid grey;
-    .Icon{
-        padding-top: 5px;
-        font-size: 1rem;
+@mixin Card {
+    background-color: whitesmoke;
+    &:hover{
+        color: #40a4c8;
+        cursor: pointer;
     }
+    .CardBox{
+        padding: 20px;
+        width: auto;   
+        height: auto;
+            .Icon{
+                padding-right: 10px;
+                font-size: 1rem;
+            }
+            p{
+                display: inline;
+            }
+        }
 }
+.Card{
+    @include Card();
+}
+.activeCard{
+    @include Card();
+    color: #40a4c8;
 }

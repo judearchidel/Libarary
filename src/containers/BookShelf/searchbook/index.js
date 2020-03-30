@@ -24,8 +24,8 @@ export const BookSearch = (props) =>{
     },[bookSearchValue,bookList,bookTodispay])
 
    return(<SearchCard>
-                <label >Search book by Name </label>
-                <input type='text' ref={inputref} 
+                <label >Search book by Name:  </label>
+                <input className={classes.input} type='text' ref={inputref} 
                 onChange={(event)=>setBookSearchValue(event.target.value)}/>
             </SearchCard>)
 }

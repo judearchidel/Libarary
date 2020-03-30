@@ -24,9 +24,17 @@
       margin: auto;
     }
     .searchResult{
-      width: 60%;
+      padding: 20px;
+      width: fit-content;
       margin: auto;
       margin-top: 10px;
+      justify-content: center;
+      p{
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: left;
+      }
+      
     }
 }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { faBook, faTrashAlt, faPlusSquare, faSearchPlus, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import classes from './index.module.scss';
 import { Card } from '../../components/UI/card';
@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 export const BookShelf = (props) =>{
 
 const bookLists = useSelector(state=>state.book);
+const [active,setActive] = useState('');
 
 const routes= <Switch>
     <Route path={props.match.url + '/viewbook'}  component={ViewBooks}/>
@@ -27,15 +28,26 @@ const routes= <Switch>
 
 const changeBooksAction=(link)=>{
     props.history.push(props.match.url + link);
+    setActive(link);
 }
 
 const displayActions = ()=>{
     const menu =  <div className={classes.BookShelfMenu}>
-    <Card iconName={faSearchPlus} link='/viewbook' click={changeBooksAction}>View books</Card>
-    <Card iconName={faBook} link='/issueBook' click={changeBooksAction}>issue books</Card>
-    <Card iconName={faExchangeAlt} link='/returnbook' click={changeBooksAction}>return books</Card>
-    <Card iconName={faPlusSquare} link='/addbook' click={changeBooksAction}>Add books</Card>
-    <Card iconName={faTrashAlt} link='/removebook' click={changeBooksAction}>Remove books</Card>  
+    <Card iconName={faSearchPlus} link='/viewbook' 
+        act={active==='/viewbook'}
+        click={changeBooksAction}>View books</Card>
+    <Card iconName={faBook} link='/issuebook' 
+        act={active==='/issuebook'}
+        click={changeBooksAction}>Issue books</Card>
+    <Card iconName={faExchangeAlt} link='/returnbook'
+        act={active==='/returnbook'} 
+        click={changeBooksAction}>Return books</Card>
+    <Card iconName={faPlusSquare} link='/addbook'
+        act={active==='/addbook'} 
+        click={changeBooksAction}>Add books</Card>
+    <Card iconName={faTrashAlt} link='/removebook'
+        act={active==='/removebook'} 
+        click={changeBooksAction}>Remove books</Card>  
 </div>
 return menu
 }    
@@ -56,7 +68,8 @@ const displayBookCount = ()=>{
 }
 
 
-    return(<Hoc>
+    return(
+    <Hoc>
         <div className={classes.BookShelf}>
             {displayActions()}
             <div className={classes.BookShelfActionDispaly}>
@@ -69,13 +82,11 @@ const displayBookCount = ()=>{
                     {displayBooksIssued()}
                 </SearchCard>
                 </div>
-                <div>
-                  {routes}
-                </div>
-       
             </div>
        </div>
-       
-        </Hoc>
+       <div>
+            {routes}
+        </div>
+    </Hoc>
         )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import {Card} from '../../components/UI/card';
 import {ViewAllMembers} from './viewAllMembers/index';
@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 export const MemberDetails = (props) =>{
 
 const memberList = useSelector(state=>state.member)
+const [active,setActive] = useState('');
 const routes = <Switch>
             <Route path={props.match.url + '/viewmembers'} component={ViewAllMembers}/>
             <Route path={props.match.url + '/addmembers'} component={AddMembers}/>
@@ -20,9 +21,15 @@ const routes = <Switch>
 
 const dispalyActions = ()=>{
     const menu = <div className={classes.MemberMenu}>
-        <Card iconName={faSearchPlus} link='/viewmembers' click={changeBooksAction}>View members</Card>
-        <Card iconName={faBook} link='/addmembers' click={changeBooksAction}>Add members</Card>
-        <Card iconName={faExchangeAlt} link='/removemembers' click={changeBooksAction}>Remove books</Card>
+        <Card iconName={faSearchPlus} link='/viewmembers' 
+            act={active==='/viewmembers'}
+            click={changeBooksAction}>View members</Card>
+        <Card iconName={faBook} link='/addmembers' 
+            act={active==='/addmembers'}
+            click={changeBooksAction}>Add members</Card>
+        <Card iconName={faExchangeAlt} link='/removemembers' 
+            act={active==='/removemembers'}
+            click={changeBooksAction}>Remove books</Card>
     </div>
 
 return menu
@@ -30,6 +37,7 @@ return menu
 
 const changeBooksAction=(link)=>{
     props.history.push(props.match.url + link);
+    setActive(link);
 }
 
 const displayUserCount = ()=>{

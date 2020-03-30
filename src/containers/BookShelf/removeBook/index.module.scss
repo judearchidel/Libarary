@@ -1,4 +1,25 @@
 .RemoveBook{
     width: 40%;
     margin: auto;
+    
+    .removeBookDisplay{
+        padding: 20px;
+        text-align: left;
+        width: fit-content;
+        margin: auto;
+    }
+    button{
+        background-color: #4287f5;
+        font-size: 1rem;
+        padding: 10px;
+        border-radius: 20px;
+        &:hover{
+            cursor: pointer;
+            background-color: #06409c;
+            color: #ffffff;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
 }

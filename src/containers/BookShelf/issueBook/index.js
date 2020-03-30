@@ -22,10 +22,12 @@ const displayBook=()=>{
     let show= <p>No books found</p>;
     if(issueBookState.bookToIssue){
         show =  <SearchCard>
-                    <p>Book Name: {issueBookState.bookToIssue.BookName}</p>
-                    <p>Count : {issueBookState.bookToIssue.Count}</p>
-                    {issueBookState.isBookSelected? dispalyMemeberSearch() 
-                    :<button onClick={()=>checkBookAvailabilty()}>select Book</button>}
+                    <div className={classes.showBook}>
+                        <p>Book Name: {issueBookState.bookToIssue.BookName}</p>
+                        <p>Count : {issueBookState.bookToIssue.Count}</p>
+                        {issueBookState.isBookSelected? dispalyMemeberSearch() 
+                        :<button onClick={()=>checkBookAvailabilty()}>select Book</button>}
+                    </div>    
                 </SearchCard>
         }
     return show;   
@@ -62,11 +64,11 @@ const searchBookResult = (result,index)=>{
 const displayMemeber= ()=>{
        let show= [];
         if(issueBookState.membertoIssue){
-            show=<div>
-                    <p>{issueBookState.membertoIssue.name}</p>
-                    <p>{issueBookState.membertoIssue.age}</p>
-                    <p>{issueBookState.membertoIssue.id}</p>
-                    <p>{issueBookState.membertoIssue.issuedBooks.count}</p>
+            show=<div className={classes.showMem}>
+                    <p>Name: {issueBookState.membertoIssue.name}</p>
+                    <p>Age: {issueBookState.membertoIssue.age}</p>
+                    <p>ID: {issueBookState.membertoIssue.id}</p>
+                    <p>Books in Hand: {issueBookState.membertoIssue.issuedBooks.count}</p>
                     <button onClick={()=>ckeckMemberIsuueLimit()}>Issue Book</button>
                 </div>
         }
@@ -92,10 +94,12 @@ const dispalyMemeberSearch=()=>{
                 </div>
     }
 
-return (<div>
+return (<div> 
             <h1>Issue books</h1>
-            <BookSearch bookTodispay={searchBookResult}/>
-            <div>
+            <div className={classes.searchBar}>   
+                <BookSearch bookTodispay={searchBookResult}/>
+            </div>
+            <div className={classes.displayBook}>
                 {displayBook()}
             </div>
         </div>)

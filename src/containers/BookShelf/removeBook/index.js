@@ -47,11 +47,11 @@ setbookToShow(result)
 }
 
 return (<div className={classes.RemoveBook}>
-        <h1>Remove book</h1>
-        <BookSearch bookTodispay={searchBookResult}></BookSearch>
-        <div>
-            {dispalyBook()}
-        </div>
+            <h1>Remove book</h1>
+            <BookSearch bookTodispay={searchBookResult}></BookSearch>
+            <div className={classes.removeBookDisplay}>
+                {dispalyBook()}
+            </div>
         </div>)
 }
 
