@@ -10,50 +10,49 @@ import { SearchCard } from '../../components/UI/SearchCard';
 import { useSelector } from 'react-redux';
 
 export const MemberDetails = (props) =>{
+    const memberList         = useSelector(state=>state.member)
+    const [active,setActive] = useState('');
 
-const memberList = useSelector(state=>state.member)
-const [active,setActive] = useState('');
-const routes = <Switch>
-            <Route path={props.match.url + '/viewmembers'} component={ViewAllMembers}/>
-            <Route path={props.match.url + '/addmembers'} component={AddMembers}/>
-            <Route path={props.match.url + '/removemembers'} component={RemoveMember}/>
-        </Switch>
+    const routes = <Switch>
+                <Route path={props.match.url + '/viewmembers'} component={ViewAllMembers}/>
+                <Route path={props.match.url + '/addmembers'} component={AddMembers}/>
+                <Route path={props.match.url + '/removemembers'} component={RemoveMember}/>
+            </Switch>
 
-const dispalyActions = ()=>{
-    const menu = <div className={classes.MemberMenu}>
-        <Card iconName={faSearchPlus} link='/viewmembers' 
-            act={active==='/viewmembers'}
-            click={changeBooksAction}>View members</Card>
-        <Card iconName={faBook} link='/addmembers' 
-            act={active==='/addmembers'}
-            click={changeBooksAction}>Add members</Card>
-        <Card iconName={faExchangeAlt} link='/removemembers' 
-            act={active==='/removemembers'}
-            click={changeBooksAction}>Remove books</Card>
-    </div>
+    const dispalyActions = ()=>{
+        const menu = <div className={classes.MemberMenu}>
+            <Card iconName={faSearchPlus} link='/viewmembers' 
+                act={active==='/viewmembers'}
+                click={changeBooksAction}>View members</Card>
+            <Card iconName={faBook} link='/addmembers' 
+                act={active==='/addmembers'}
+                click={changeBooksAction}>Add members</Card>
+            <Card iconName={faExchangeAlt} link='/removemembers' 
+                act={active==='/removemembers'}
+                click={changeBooksAction}>Remove books</Card>
+        </div>
+        return menu
+    }
 
-return menu
-}
+    const changeBooksAction=(link)=>{
+        props.history.push(props.match.url + link);
+        setActive(link);
+    }
 
-const changeBooksAction=(link)=>{
-    props.history.push(props.match.url + link);
-    setActive(link);
-}
+    const displayUserCount = ()=>{
+        const count = memberList.length;
+        return <p>Total number of users: {count}</p>
+    }
 
-const displayUserCount = ()=>{
-const count = memberList.length;
-return <p>Total number of users: {count}</p>
-}
-
-const displBookToReturn= ()=>{
-let total = 0;
-    if(memberList.length){    
-const count= memberList.map(el => {
-   return el.issuedBooks.count
-})
-total = count.reduce((sum,el)=>sum+el)
-}
-return <p>Books to return: {total}</p>
+    const displBookToReturn= ()=>{
+        let total = 0;
+            if(memberList.length){    
+                const count= memberList.map(el => {
+                return el.issuedBooks.count
+            })
+        total = count.reduce((sum,el)=>sum+el)
+    }
+    return <p>Books to return: {total}</p>
 }
 
     return (

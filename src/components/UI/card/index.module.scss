@@ -8,14 +8,14 @@
         padding: 20px;
         width: auto;   
         height: auto;
-            .Icon{
-                padding-right: 10px;
-                font-size: 1rem;
+        .Icon{
+            padding-right: 10px;
+            font-size: 1rem;
             }
-            p{
-                display: inline;
-            }
+        p{
+            display: inline;
         }
+    }
 }
 .Card{
     @include Card();

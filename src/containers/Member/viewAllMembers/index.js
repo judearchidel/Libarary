@@ -3,9 +3,8 @@ import classes from './index.module.scss';
 import { useSelector } from 'react-redux';
 
 export const ViewAllMembers = ()=>{
-    const memberdata = useSelector(state=>state.member);
+    const memberdata         = useSelector(state=>state.member);
     const isMembersAvailable = memberdata.length;    
-
 
     const displayMemberList = ()=>{
         const memberListRow = memberdata.map(el=>{
@@ -16,17 +15,17 @@ export const ViewAllMembers = ()=>{
                     <td>{el.Type}</td>
                     <td>{el.Address}</td>
                     <td>{el.issuedBooks.count}</td>
-        </tr>
-    }) 
-            return <table>
+            </tr>
+        }) 
+        return <table>
                     <thead>
                         <tr>
-                        <th>Member id</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Type</th>
-                        <th>Address</th>
-                        <th>Books in hand</th>
+                            <th>Member id</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Type</th>
+                            <th>Address</th>
+                            <th>Books in hand</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,15 +33,16 @@ export const ViewAllMembers = ()=>{
                     </tbody>
                 </table>
               
-    }
+        }
+
     const noMemberToDispaly = ()=>{
         return <p>Plaease add some members</p>
     }
 
     return( <div>
-            <h1>Member List</h1>
-             <div className={classes.viewTable}>
-                {isMembersAvailable?displayMemberList():noMemberToDispaly()}
-             </div>   
+                <h1>Member List</h1>
+                <div className={classes.viewTable}>
+                    {isMembersAvailable?displayMemberList():noMemberToDispaly()}
+                </div>   
             </div>)
     }

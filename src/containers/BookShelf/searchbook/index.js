@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import {SearchCard} from '../../../components/UI/SearchCard';
 
 export const BookSearch = (props) =>{
-    const {bookTodispay}={...props};
-    const bookList = useSelector(state=>state.book)
+    const {bookTodispay}                       =  {...props};
+    const bookList                             = useSelector(state=>state.book)
     const [bookSearchValue,setBookSearchValue] = useState('');
-    const inputref = useRef();
+    const inputref                             = useRef();
+    
     useEffect(()=>{
         const timer = setTimeout(()=>{
             if(bookSearchValue === inputref.current.value)

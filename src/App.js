@@ -4,7 +4,7 @@ import  {AuthPage} from './containers/Auth/index';
 import {BookShelf} from './containers/BookShelf/index'
 import './App.scss';
 import { useSelector } from 'react-redux';
-import { Layout } from './components/Layout/Layout';
+import { Layout } from './components/Layout/index';
 import { MemberDetails } from './containers/Member/index';
 import {LogOut} from './containers/Auth/Logout/index';
 

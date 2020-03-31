@@ -3,7 +3,7 @@ import * as actionTypes from '../action/actionTypes';
 const intialState = [];
 
 export const bookReducer = (state= intialState, action)=>{
-   let newState = null;
+    let newState = null;
     switch(action.type){
         case actionTypes.BOOK_ADD:
             newState = [...state]

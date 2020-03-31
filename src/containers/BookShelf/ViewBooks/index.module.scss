@@ -1,40 +1,42 @@
 .viewBooks{
     margin: 10px;
-.viewBooksTable{
-    table{
-        width: 100%;
-        margin-top: 10px;
-    thead th {
-        background: #35D380;
-        color: #fff;
-        font-weight: initial;
-      }
-      
+  .viewBooksTable{
+      table{
+          width: 100%;
+          margin-top: 10px;
+      thead th {
+          background: #35D380;
+          color: #fff;
+          font-weight: initial;
+        }
+        
       tr { background: #f1f1f1; }
-      
+        
       tr:nth-child(2n) { background: #e0e0e0; }
-      
+        
       th, td {
-        text-align: left;
-        padding: 24px;
+          text-align: left;
+          padding: 24px;
+        }
       }
-    }
-    .searchBar{
-      width: 40%;
-      margin: auto;
-    }
-    .searchResult{
-      padding: 20px;
-      width: fit-content;
-      margin: auto;
-      margin-top: 10px;
-      justify-content: center;
-      p{
-        padding-left: 20px;
-        padding-right: 20px;
-        text-align: left;
+
+      .searchBar{
+        width: 40%;
+        margin: auto;
       }
       
-    }
-}
+      .searchResult{
+        padding: 20px;
+        width: fit-content;
+        margin: auto;
+        margin-top: 10px;
+        justify-content: center;
+        p{
+          padding-left: 20px;
+          padding-right: 20px;
+          text-align: left;
+        }
+        
+      }
+  }
 }

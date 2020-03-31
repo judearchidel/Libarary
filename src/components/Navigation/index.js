@@ -7,15 +7,17 @@ import { useSelector } from 'react-redux';
 
 export const Navigation = (props)=>{
     const userid= useSelector(state=>state.auth.userid)
-return <div className={classes.NavBar}>
-        <div className={classes.NavBarUser}>
-        <FontAwesomeIcon icon={faUserCircle} className={classes.Icon}/>
-        <p>{userid}</p>
+    return (
+        <div className={classes.NavBar}>
+            <div className={classes.NavBarUser}>
+                <FontAwesomeIcon icon={faUserCircle} className={classes.Icon}/>
+                <p>{userid}</p>
+            </div>
+            <ul className={classes.Navigation}>
+                <NavigationItem link='/'>Book Shelf</NavigationItem>
+                <NavigationItem link='/member'>Member</NavigationItem>
+                <NavigationItem link='/logout'>Logout</NavigationItem>
+            </ul>
         </div>
-        <ul className={classes.Navigation}>
-            <NavigationItem link='/'>Book Shelf</NavigationItem>
-            <NavigationItem link='/member'>Member</NavigationItem>
-            <NavigationItem link='/logout'>Logout</NavigationItem>
-        </ul>
-    </div>
+    )
 }

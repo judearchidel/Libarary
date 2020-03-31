@@ -6,9 +6,9 @@ import * as actions from '../../../_store/action/index';
 import { MemberSearch } from '../memberSearch';
 
  const InitialRemoveMember = (props)=>{
-    const {onRemoveMember}={...props}
-    const memberList = useSelector(state=>state.member);
-    const [memberToDisplay,setMemberToDisplay]=useState('');
+    const {onRemoveMember}                      =   {...props}
+    const memberList                            =   useSelector(state=>state.member);
+    const [memberToDisplay,setMemberToDisplay]  =   useState('');
 
 
     const removeMemberHandler = (id)=>{
@@ -17,7 +17,7 @@ import { MemberSearch } from '../memberSearch';
     }
 
     const dispayMemebr =()=>{
-       let show=null;
+        let show=null;
         if(memberToDisplay){
            show=<SearchCard>
                 <p>Name: {memberToDisplay.Name}</p>
@@ -31,6 +31,7 @@ import { MemberSearch } from '../memberSearch';
         }
         return show;
     }
+
     const searchResult=(result)=>{
         setMemberToDisplay(result);
     }
@@ -45,7 +46,7 @@ import { MemberSearch } from '../memberSearch';
                 {dispayMemebr()}
             </div>
         </Fragment>
-        )
+    )
 }
 
 const mapDispatchToProps = (dispatch)=>{
