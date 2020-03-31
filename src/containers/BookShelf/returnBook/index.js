@@ -43,7 +43,7 @@ export const InitialReturnBook= (props)=>{
                 issuedBookIds = <p>No Books Issued</p>
             }  
             return <div className={classes.returnMember}>
-                        <p>Name: {returnState.memberToreturn.name}</p>
+                        <p>Name: {returnState.memberToreturn.Name}</p>
                         <p>Member ID: {returnState.memberToreturn.id}</p>
                         {issuedBookIds}
                         {displaySelectedBook()}  

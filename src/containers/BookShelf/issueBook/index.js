@@ -67,8 +67,8 @@ export const InitialIssueBook= (props)=>{
         if(issueBookState.membertoIssue){
             show = (
                 <div className={classes.showMem}>
-                    <p>Name: {issueBookState.membertoIssue.name}</p>
-                    <p>Age: {issueBookState.membertoIssue.age}</p>
+                    <p>Name: {issueBookState.membertoIssue.Name}</p>
+                    <p>Age: {issueBookState.membertoIssue.Age}</p>
                     <p>ID: {issueBookState.membertoIssue.id}</p>
                     <p>Books in Hand: {issueBookState.membertoIssue.issuedBooks.count}</p>
                     <button onClick={()=>ckeckMemberIsuueLimit()}>Issue Book</button>
