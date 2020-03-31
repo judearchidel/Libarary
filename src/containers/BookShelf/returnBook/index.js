@@ -20,10 +20,11 @@ const bookList                                          = useSelector(state=>sta
 const {onBookReturnBookAction,onBookReturnMemberAction} = {...props}
 
 const memberSearchResult = (result, index)=>{
-    setReturnState({...returnState,
-                memberToreturn: result,
-                memberIndex: index 
-            })
+    setReturnState({
+        ...returnState,
+        memberToreturn: result,
+        memberIndex: index 
+        })
 }
 
 const displaySearchresult= ()=>{
@@ -82,7 +83,7 @@ setReturnState(initialState);
 
 return (
         <Hoc>
-            <h3>Return books</h3>
+            <h1>Return books</h1>
             <div className={classes.returnSearch}>    
                 <MemberSearch memberTodispay={memberSearchResult}></MemberSearch>    
             </div>

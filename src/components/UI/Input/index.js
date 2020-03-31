@@ -29,10 +29,13 @@ const renderSelect = (type)=>{
     
     return(
         <div className={classes.Input}>
-        <span className={classes.floatingLabel}>{type}</span>
-        <select onChange={(event)=>change(event,type)} required>
-            {selectOptions}
-        </select>
+            <span className={classes.floatingLabel}>{type}</span>
+            <div className={classes.select}>
+                <select onChange={(event)=>change(event,type)} required>
+                    {selectOptions}
+                </select>
+            </div>
+        
         </div>
     )
 }

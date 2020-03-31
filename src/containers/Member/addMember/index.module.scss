@@ -1,4 +1,20 @@
 .memberAddForm{
     width: 50%;
     margin: auto;
+    padding: 25px;
+    button{
+        width: 60%;
+        background-color: #4287f5;
+        font-size: 1rem;
+        padding: 5px;
+        border-radius: 20px;
+        &:hover{
+            cursor: pointer;
+            background-color: #06409c;
+            color: #ffff;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
 }

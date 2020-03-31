@@ -3,24 +3,25 @@ import classes from './index.module.scss';
 import shortid from 'shortid';
 import {Input} from '../../../components/UI/Input/index';
 import * as actions from '../../../_store/action/index';
+import {SearchCard } from '../../../components/UI/SearchCard/index'
 import { connect } from 'react-redux';
 
 export const InitalAddMembers = (props)=>{
 const {onAddMember}={...props}
 const intialMemberInputs = {
-    name: {
+    Name: {
         key: shortid.generate(),
         type: 'text',
         value: '',
         required: true
     },
-    age: {
+    Age: {
         key: shortid.generate(),
         type: 'number',
         value: '',
         required: true
     },
-    type: {
+    Type: {
         key: shortid.generate(),
         type: 'select',
         value:'student',
@@ -30,7 +31,7 @@ const intialMemberInputs = {
         },
         required: true    
     },
-    address:{
+    Address:{
         key: shortid.generate(),
         type: 'text',
         value: '',
@@ -103,9 +104,12 @@ const displayAddform=()=>{
     return form;
 }
 
-    return (<div className={classes.memberAddForm}>
-            <h1>Add Memeber</h1>
+    return (
+        <div className={classes.memberAddForm}>
+            <SearchCard>
+                <h1>Add Member</h1>
                 {displayAddform()}
+            </SearchCard>
         </div>)
 }
 

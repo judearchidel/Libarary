@@ -1,0 +1,25 @@
+.removeMemberSearch{
+    width: 60%;
+    margin: auto;
+}
+.removeMemberDisplay{
+    width: fit-content;
+    margin: auto;
+    padding: 20px;
+    text-align: left;
+    button{
+        width: 100%;
+        background-color: #4287f5;
+        font-size: 1rem;
+        padding: 5px;
+        border-radius: 20px;
+        &:hover{
+            cursor: pointer;
+            background-color: #06409c;
+            color: #ffff;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+}

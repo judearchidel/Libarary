@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import {Card} from '../../components/UI/card';
 import {ViewAllMembers} from './viewAllMembers/index';
@@ -57,21 +57,25 @@ return <p>Books to return: {total}</p>
 }
 
     return (
-        <div className={classes.Member}>
-        {dispalyActions()}
-        <div className={classes.MemberAction}>
-        <h1>Member Details</h1>
-            <div className={classes.Dash}>
-            <SearchCard>
-                {displayUserCount()}
-            </SearchCard>
-            <SearchCard>
-                {displBookToReturn()}
-            </SearchCard>
+        <Fragment>
+            <div className={classes.Member}>
+                {dispalyActions()}
+                <div className={classes.MemberAction}>
+                    <h1>Member Details</h1>
+                    <div className={classes.Dash}>
+                        <SearchCard>
+                            {displayUserCount()}
+                        </SearchCard>
+                        <SearchCard>
+                            {displBookToReturn()}
+                        </SearchCard>
+                    </div>
+                </div>
             </div>
             {routes}
-        </div>
-    </div>
+        </Fragment>
+        
+
     )
 }
 

@@ -11,10 +11,10 @@ export const ViewAllMembers = ()=>{
         const memberListRow = memberdata.map(el=>{
             return <tr key={el.id}>
                     <td>{el.id}</td>
-                    <td>{el.name}</td>
-                    <td>{el.age}</td>
-                    <td>{el.type}</td>
-                    <td>{el.address}</td>
+                    <td>{el.Name}</td>
+                    <td>{el.Age}</td>
+                    <td>{el.Type}</td>
+                    <td>{el.Address}</td>
                     <td>{el.issuedBooks.count}</td>
         </tr>
     }) 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import classes from './index.module.scss' 
 import { SearchCard } from '../../../components/UI/SearchCard'
 import { useSelector, connect } from 'react-redux';
@@ -20,11 +20,11 @@ import { MemberSearch } from '../memberSearch';
        let show=null;
         if(memberToDisplay){
            show=<SearchCard>
-                <p>Name: {memberToDisplay.name}</p>
+                <p>Name: {memberToDisplay.Name}</p>
                 <p>Memeber id: {memberToDisplay.id}</p>
-                <p>Age: {memberToDisplay.age}</p>
-                <p>Address: {memberToDisplay.address}</p>
-                <p>Type: {memberToDisplay.type}</p>
+                <p>Age: {memberToDisplay.Age}</p>
+                <p>Address: {memberToDisplay.Address}</p>
+                <p>Type: {memberToDisplay.Type}</p>
                 <p>Books in hand: {memberToDisplay.issuedBooks.count}</p>
                 <button onClick={()=>{removeMemberHandler(memberToDisplay.id)}}>Remove</button>
             </SearchCard>
@@ -35,13 +35,17 @@ import { MemberSearch } from '../memberSearch';
         setMemberToDisplay(result);
     }
 
-    return <div>
+    return( 
+        <Fragment>
             <h1>Remove Member</h1>
-            <MemberSearch memberTodispay={searchResult}/>
-        <div>
-            {dispayMemebr()}
-        </div>
-    </div>
+            <div className={classes.removeMemberSearch}>
+                <MemberSearch memberTodispay={searchResult}/>
+            </div>
+            <div className={classes.removeMemberDisplay}>
+                {dispayMemebr()}
+            </div>
+        </Fragment>
+        )
 }
 
 const mapDispatchToProps = (dispatch)=>{

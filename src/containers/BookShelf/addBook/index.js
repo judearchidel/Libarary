@@ -28,7 +28,7 @@ const intialBookInputs= {
         value: '',
         required: true
     },
-    Genre: {
+    Genres: {
         key: shortid.generate(),
         type: 'text',
         value: '',

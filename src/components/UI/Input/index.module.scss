@@ -19,16 +19,31 @@ $background: #4287f5;
             padding-top: 20px;   
         }
         &[type=number]{
-        width: 10%;
+            width: 10%;
+        }
+    }
+    .select{
+        display: inline;
+        border-bottom: 1px solid black;
+        select{
+            background-color: transparent;
+            font-size: 1rem;
+            border: none;
+            padding: 5px;
+            &:focus{
+                outline: none;
+        } 
     }
     }
-.floatingLabel {
-    padding-bottom: 2px;
-    color: black;
-    }
-.validationText{
-    font-size: 0.8rem;
-    margin: 0;
-    color: #c20000;
-    }
+   
+    .floatingLabel {
+        padding-bottom: 2px;
+        color: black;
+        padding-right: 10px;
+        }
+    .validationText{
+        font-size: 0.8rem;
+        margin: 0;
+        color: #c20000;
+        }
 }

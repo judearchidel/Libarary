@@ -13,7 +13,7 @@ export const MemberSearch = (props) =>{
             if(memberSearchValue === inputref.current.value)
             {
                 const index= memberList.findIndex(el=>{
-                    return el.name === memberSearchValue
+                    return el.Name === memberSearchValue
                 })
                 memberTodispay(memberList[index],index)
             }
