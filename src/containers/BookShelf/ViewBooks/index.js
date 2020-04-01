@@ -74,7 +74,7 @@ export const ViewBooks = (props) =>{
 
     const nobooksDisplay = ()=>{
         return <div>
-                <h3>Please add some books</h3>
+                <p>Please add some books</p>
         </div>
     }    
     

@@ -3,16 +3,17 @@
     box-sizing: border-box;
     display: block;
     a{
-        color: #000000;
+        color: #353F4F;
         text-decoration: none;
         width: 100%;
         box-sizing: border-box;
         display: block;
         &:hover{
-            color:  #40a4c8;  
+            color:  #ffffff;  
         }
     }
+    
     .active{
-        color:  #40a4c8;
+        color: #ffffff;
         }
 }

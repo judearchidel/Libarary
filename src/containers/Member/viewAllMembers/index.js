@@ -39,7 +39,7 @@ export const ViewAllMembers = ()=>{
         return <p>Plaease add some members</p>
     }
 
-    return( <div>
+    return( <div className={classes.viewMembers}>
                 <h1>Member List</h1>
                 <div className={classes.viewTable}>
                     {isMembersAvailable?displayMemberList():noMemberToDispaly()}

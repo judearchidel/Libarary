@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { faBook, faTrashAlt, faPlusSquare, faSearchPlus, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
+import { faBook, faTrashAlt, faPlusSquare, faSearchPlus, faExchangeAlt, faSwatchbook } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './index.module.scss';
 import { Card } from '../../components/UI/card';
 import { Route, Switch, Redirect} from 'react-router-dom';
-import { ViewBooks } from './ViewBooks/index';
+import { ViewBooks } from './viewBooks';
 import { IssueBook } from './issueBook';
 import { ReturnBook } from './returnBook';
 import { AddBook } from './addBook';
@@ -22,7 +23,7 @@ export const BookShelf = (props) =>{
         <Route path={props.match.url + '/returnbook'}  component={ReturnBook}/>
         <Route path={props.match.url + '/addbook'}  component={AddBook}/>
         <Route path={props.match.url + '/removebook'} component={RemoveBook}/>
-        <Redirect to='/book'/>
+        <Redirect to='/viewbook'/>
     </Switch>
 
     const changeBooksAction=(link)=>{
@@ -59,12 +60,30 @@ export const BookShelf = (props) =>{
                 return el.issueCount})
             total = issueCount.reduce((sum,el)=>sum+el)
         }
-        return <p>books issued count : {total}</p>
+        return (
+            <div className={classes.BookCount}>
+                <div>
+                <FontAwesomeIcon icon={faSwatchbook} className={classes.Icon}/>
+                </div>
+                <div className={classes.BookcountText}>
+                <p>Books Issued</p>
+                <span>{total}</span>
+                </div>
+            </div>)
     }
 
     const displayBookCount = ()=>{
         const bookCount = bookLists.length
-            return <p>book Count: {bookCount}</p>
+            return (
+            <div className={classes.BookCount}>
+                <div>
+                <FontAwesomeIcon icon={faBook} className={classes.Icon}/>
+                </div>
+                <div className={classes.BookcountText}>
+                <p>Book Count</p>
+                <span>{bookCount}</span>
+                </div>
+            </div>)
     }
 
 
@@ -73,7 +92,11 @@ export const BookShelf = (props) =>{
             <div className={classes.BookShelf}>
                 {displayActions()}
                 <div className={classes.BookShelfActionDispaly}>
-                    <h2> Book Shelf</h2>
+                    <div className={classes.BookShelfHeading}>
+                    {active?<h2> Book Shelf <span>Book {active}</span></h2>:
+                    <h2> Book Shelf Dashboard <span>{'\u00A0'}</span></h2>
+                    }
+                    </div>
                     <div className={classes.Dash}> 
                         <SearchCard>
                             {displayBookCount()}
@@ -85,7 +108,7 @@ export const BookShelf = (props) =>{
                 </div>
             </div>
             <div>
-                {routes}
+                {active? routes:<ViewBooks></ViewBooks>}
             </div>
         </Hoc>
     )

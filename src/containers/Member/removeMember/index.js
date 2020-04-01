@@ -37,7 +37,7 @@ import { MemberSearch } from '../memberSearch';
     }
 
     return( 
-        <Fragment>
+        <div className={classes.removeMember}>
             <h1>Remove Member</h1>
             <div className={classes.removeMemberSearch}>
                 <MemberSearch memberTodispay={searchResult}/>
@@ -45,7 +45,7 @@ import { MemberSearch } from '../memberSearch';
             <div className={classes.removeMemberDisplay}>
                 {dispayMemebr()}
             </div>
-        </Fragment>
+        </div>
     )
 }
 

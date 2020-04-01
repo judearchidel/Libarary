@@ -112,8 +112,8 @@ const InaddBook= (props)=>{
 
     return (
         <div className={classes.AddForm}>
+            <h1> Add Book</h1>
             <SearchCard>
-                <h1> Add Book</h1>
                 {displayAddform()}
             </SearchCard>    
         </div>

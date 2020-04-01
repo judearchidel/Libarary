@@ -2,15 +2,55 @@
     display: flex;
     flex-direction: row;
     .MemberMenu{
+        height: 100%;
         float: left;
         flex: 1 1 1;
+        background-color: #696969;
     }
     .MemberAction{
         flex: 2 1 0;
+        .MemberActionHeading{
+            background-color: #ffffff;
+            text-align: left;
+            h2{
+                margin: 0px;
+                padding: 40px;
+                text-align: left;
+                span{
+                    display: block;
+                    font-size: 14px;
+                    font-weight: normal;
+                    padding-top: 5px;
+                    color:#b0b0b0
+                }
+            }
+        }
     }
     .Dash{
+        padding-top: 30px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+    }
+    .bookUserCount{
+        display: flex;
+        flex-direction: row;
+        color: #856505;
+        .Icon{
+            font-size: 50px;
+            padding: 10px;
+        }
+        .bookUsercountText{
+            padding-left: 10px;
+            p{
+                margin: 0;
+            }
+            span{
+                color: #063cd1;
+                padding-top: 18px;
+                display: block;
+                font-size: 20px;
+            }
+        }
     }
 }

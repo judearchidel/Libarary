@@ -5,6 +5,8 @@ import shortid from 'shortid';
 import { useSelector,connect } from 'react-redux';
 import * as actions from '../../_store/action/auth';
 import classes from './index.module.scss';
+import { faBookReader } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
  
 
 const Auth = (props) => {
@@ -86,6 +88,7 @@ const Auth = (props) => {
         const form = (
             <form onSubmit={onAuthSubmitHandler} className={classes.AuthForm}>
                 <div>
+                    <FontAwesomeIcon icon={faBookReader} className={classes.icon}/>
                     <h1>Welcome</h1>
                     <p className={classes.errorDisplay}>{error}</p>
                 </div>

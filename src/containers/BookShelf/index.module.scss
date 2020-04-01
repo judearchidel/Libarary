@@ -2,17 +2,56 @@
     display: flex;
     flex-direction: row;
     .BookShelfMenu{
+        height: 100%;
         float: left;
         display: block;
         flex: 1 1 1;
         text-align: left;
+        background-color: #696969;
     }
     .BookShelfActionDispaly{
         flex: 2 1 0;
+        .BookShelfHeading{
+            background-color: #ffffff;
+            h2{
+                margin: 0px;
+                padding: 40px;
+                text-align: left;
+            span{
+                display: block;
+                font-size: 14px;
+                font-weight: normal;
+                padding-top: 5px;
+                color: #b0b0b0;
+            }
+            }
+        }
     }
     .Dash{
+        padding: 30px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+    }
+    .BookCount{
+        display: flex;
+        flex-direction: row;
+        color: #856505;
+        .Icon{
+            font-size: 50px;
+            padding: 10px;
+        }
+        .BookcountText{
+            padding-left: 10px;
+            p{
+                margin: 0;
+            }
+            span{
+                color: #063cd1;
+                padding-top: 18px;
+                display: block;
+                font-size: 20px;
+            }
+        }
     }
 }

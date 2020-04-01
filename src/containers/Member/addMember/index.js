@@ -107,8 +107,8 @@ export const InitalAddMembers = (props)=>{
 
     return (
         <div className={classes.memberAddForm}>
+            <h1>Add Member</h1>
             <SearchCard>
-                <h1>Add Member</h1>
                 {displayAddform()}
             </SearchCard>
         </div>

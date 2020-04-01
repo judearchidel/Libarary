@@ -85,13 +85,13 @@ export const InitialReturnBook= (props)=>{
     }
 
     return (
-            <Hoc>
+            <div className={classes.returnBook}>
                 <h1>Return books</h1>
                 <div className={classes.returnSearch}>    
                     <MemberSearch memberTodispay={memberSearchResult}></MemberSearch>    
                 </div>
                 {displaySearchresult()}
-            </Hoc>
+            </div>
         )
     }
 

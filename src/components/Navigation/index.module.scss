@@ -10,8 +10,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #dedede;
+    background-color: #40a4c8;
+    border-bottom: 1px solid #353F4F;
     justify-content: space-between;
+    color: #353F4F;
     .NavBarUser{
         @include rowdisplay();
         margin: 5px;

@@ -1,5 +1,8 @@
 .viewBooks{
     margin: 10px;
+    h1,p{
+      margin-left: 10%;
+    }
   .viewBooksTable{
       table{
           width: 100%;
@@ -10,7 +13,7 @@
           font-weight: initial;
         }
         
-      tr { background: #f1f1f1; }
+      tr { background: #ffffff; }
         
       tr:nth-child(2n) { background: #e0e0e0; }
         

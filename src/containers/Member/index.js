@@ -4,7 +4,8 @@ import {Card} from '../../components/UI/card';
 import {ViewAllMembers} from './viewAllMembers/index';
 import {AddMembers} from './addMember/index';
 import {RemoveMember} from './removeMember/index';
-import { faBook,faSearchPlus, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
+import { faBook,faSearchPlus, faExchangeAlt, faUsers, faAddressBook } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './index.module.scss';
 import { SearchCard } from '../../components/UI/SearchCard';
 import { useSelector } from 'react-redux';
@@ -41,7 +42,16 @@ export const MemberDetails = (props) =>{
 
     const displayUserCount = ()=>{
         const count = memberList.length;
-        return <p>Total number of users: {count}</p>
+        return (
+            <div className={classes.bookUserCount}>
+                <div>
+                <FontAwesomeIcon icon={faUsers} className={classes.Icon}/>
+                </div>
+                <div className={classes.bookUsercountText}>
+                <p>Total users</p>
+                <span>{count}</span>
+                </div>
+            </div>)
     }
 
     const displBookToReturn= ()=>{
@@ -52,7 +62,16 @@ export const MemberDetails = (props) =>{
             })
         total = count.reduce((sum,el)=>sum+el)
     }
-    return <p>Books to return: {total}</p>
+    return (
+        <div className={classes.bookUserCount}>
+            <div>
+            <FontAwesomeIcon icon={faAddressBook} className={classes.Icon}/>
+            </div>
+            <div className={classes.bookUsercountText}>
+            <p>Books to return</p>
+            <span>{total}</span>
+            </div>
+        </div>)
 }
 
     return (
@@ -60,7 +79,9 @@ export const MemberDetails = (props) =>{
             <div className={classes.Member}>
                 {dispalyActions()}
                 <div className={classes.MemberAction}>
-                    <h1>Member Details</h1>
+                    <div className={classes.MemberActionHeading}>
+                        {active?<h2>Member Details <span>Member {active}</span></h2>:<h2>Member Dashboard</h2>}
+                    </div>
                     <div className={classes.Dash}>
                         <SearchCard>
                             {displayUserCount()}

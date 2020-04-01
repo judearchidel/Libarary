@@ -1,7 +1,7 @@
 @mixin Card {
-    background-color: whitesmoke;
+    color: #ffffff;
     &:hover{
-        color: #40a4c8;
+        background-color: #353F4F;
         cursor: pointer;
     }
     .CardBox{

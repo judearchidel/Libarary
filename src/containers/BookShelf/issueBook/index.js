@@ -100,7 +100,7 @@ export const InitialIssueBook= (props)=>{
     }
 
     return (
-        <div> 
+        <div className={classes.issueBook}> 
             <h1>Issue books</h1>
             <div className={classes.searchBar}>   
                 <BookSearch bookTodispay={searchBookResult}/>

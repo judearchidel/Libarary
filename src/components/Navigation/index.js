@@ -14,7 +14,7 @@ export const Navigation = (props)=>{
                 <p>{userid}</p>
             </div>
             <ul className={classes.Navigation}>
-                <NavigationItem link='/'>Book Shelf</NavigationItem>
+                <NavigationItem link='/book'>Book Shelf</NavigationItem>
                 <NavigationItem link='/member'>Member</NavigationItem>
                 <NavigationItem link='/logout'>Logout</NavigationItem>
             </ul>
