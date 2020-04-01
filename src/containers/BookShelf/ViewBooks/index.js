@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from './node_modules/react';
+import { useSelector } from './node_modules/react-redux';
 import classes from './index.module.scss';
 import {BookSearch} from '../searchbook/index';
 import {Hoc} from '../../../hoc/hoc';
