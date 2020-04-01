@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './index.module.scss';
 import { Card } from '../../components/UI/card';
 import { Route, Switch, Redirect} from 'react-router-dom';
-import { ViewBooks } from './viewBooks';
+import { ViewBooks } from './viewBooks/index';
 import { IssueBook } from './issueBook';
 import { ReturnBook } from './returnBook';
 import { AddBook } from './addBook';
