@@ -3,7 +3,7 @@ import { faBook, faTrashAlt, faPlusSquare, faSearchPlus, faExchangeAlt, faSwatch
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './index.module.scss';
 import { Card } from '../../components/UI/card';
-import { Route, Switch, Redirect} from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import { ViewBooks } from './ViewBooks/index';
 import { IssueBook } from './issueBook';
 import { ReturnBook } from './returnBook';
@@ -18,16 +18,15 @@ export const BookShelf = (props) =>{
     const [active,setActive] = useState('');
 
     const routes = <Switch>
-        <Route path={props.match.url + '/viewbook'}  component={ViewBooks}/>
-        <Route path={props.match.url + '/issuebook'}  component={IssueBook}/>
-        <Route path={props.match.url + '/returnbook'}  component={ReturnBook}/>
-        <Route path={props.match.url + '/addbook'}  component={AddBook}/>
-        <Route path={props.match.url + '/removebook'} component={RemoveBook}/>
-        <Redirect to='/viewbook'/>
+        <Route path={'/viewbook'} component={ViewBooks}/>
+        <Route path={'/issuebook'}  component={IssueBook}/>
+        <Route path={'/returnbook'}  component={ReturnBook}/>
+        <Route path={'/addbook'}  component={AddBook}/>
+        <Route path={'/removebook'} component={RemoveBook}/>
     </Switch>
 
     const changeBooksAction=(link)=>{
-        props.history.push(props.match.url + link);
+        props.history.push(link);
         setActive(link);
     }
 
@@ -108,7 +107,7 @@ export const BookShelf = (props) =>{
                 </div>
             </div>
             <div>
-                {active? routes:<ViewBooks></ViewBooks>}
+                {routes}
             </div>
         </Hoc>
     )

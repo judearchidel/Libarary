@@ -21,6 +21,7 @@
 }
 
 .returnMember{
+    padding: 10px;
     margin: auto;
     width: fit-content;
     text-align: left;
@@ -43,5 +44,6 @@
     width: fit-content;
     button{
         @include button();
+        width: 100%;
     }
 }

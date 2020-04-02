@@ -10,7 +10,6 @@ import {LogOut} from './containers/Auth/Logout/index';
 
 function App() {
   const authenticated = useSelector(state => state.auth.authenticated)
-  console.log(authenticated)
   let routes = ( <Switch>
     <Route path='/' exact component={AuthPage} /> 
     <Redirect to='/'/>   
@@ -19,10 +18,9 @@ function App() {
   if(authenticated)
   {
   routes = ( <Layout><Switch>
-      <Route path='/book' component={BookShelf} /> 
       <Route path='/member'  component={MemberDetails} />
       <Route path='/logout' exact component={LogOut} />
-      <Redirect from='/' to='/book'/>
+      <Route path='/'  component={BookShelf} /> 
       </Switch></Layout>
       )
     }

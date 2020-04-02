@@ -1,4 +1,4 @@
-import React, { useRef, useState,useEffect } from 'react';
+import React, {useState,useEffect } from 'react';
 import { SearchCard } from '../../../components/UI/SearchCard';
 import classes from './index.module.scss';
 import { useSelector, connect } from 'react-redux';
@@ -9,12 +9,31 @@ const InitailremoveBook= (props)=>{
     const {onRemoveBook,onReduceBookCount}  = {...props}
     const [bookToShow,setbookToShow]        = useState('');
     const booksList                         = useSelector(state=>state.book)
+    const book                              = null;
+    const [showSearch,setShowSearch]        = useState(false); 
+    const title = [];
+    const query = new URLSearchParams(props.location.search);
+    for(let par of query.entries()){
+        title.push(par);
+    }    
+    useEffect(()=>{
+        if(title[0]){
+            setShowSearch(true);
+            const index= booksList.findIndex(el=>{
+                return el.id === title[0][0]
+            })
+            setbookToShow(booksList[index]) ;
+        }
+    },[book])
+      
 
     const removeBookhandler=()=>{
         const index= booksList.findIndex(el=>{
             return bookToShow.BookName===el.BookName
         })  
         onRemoveBook(index);
+        setShowSearch(false);
+        setbookToShow('');
     }
 
     const removeBookCounthandler=()=>{
@@ -26,6 +45,9 @@ const InitailremoveBook= (props)=>{
 
     const dispalyBook= ()=>{
         let show= null;
+        if(book){
+            setbookToShow(book);
+        }
         if(bookToShow){ 
                 const isBooktoRemoveByCount = bookToShow.Count>1;
                 show= <SearchCard>
@@ -45,7 +67,7 @@ const InitailremoveBook= (props)=>{
     return (
         <div className={classes.RemoveBook}>
             <h1>Remove book</h1>
-            <BookSearch bookTodispay={searchBookResult}></BookSearch>
+            {!showSearch&&<BookSearch bookTodispay={searchBookResult}></BookSearch>}
             <div className={classes.removeBookDisplay}>
                 {dispalyBook()}
             </div>

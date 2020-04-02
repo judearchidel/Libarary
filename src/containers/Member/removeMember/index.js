@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState,useEffect } from 'react'
 import classes from './index.module.scss' 
 import { SearchCard } from '../../../components/UI/SearchCard'
 import { useSelector, connect } from 'react-redux';
@@ -6,14 +6,31 @@ import * as actions from '../../../_store/action/index';
 import { MemberSearch } from '../memberSearch';
 
  const InitialRemoveMember = (props)=>{
-    const {onRemoveMember}                      =   {...props}
+    const {onRemoveMember}                      =   {...props};
     const memberList                            =   useSelector(state=>state.member);
     const [memberToDisplay,setMemberToDisplay]  =   useState('');
-
+    const member                                =   null;
+    const [showSearch,setShowSearch]            =   useState(false); 
+    const title = [];
+    const query = new URLSearchParams(props.location.search);
+    for(let par of query.entries()){
+        title.push(par);
+    }    
+    useEffect(()=>{
+        if(title[0]){
+            setShowSearch(true);
+            const index= memberList.findIndex(el=>{
+                return el.id === title[0][0]
+            })
+            setMemberToDisplay(memberList[index]) ;
+        }
+    },[member])
 
     const removeMemberHandler = (id)=>{
         const index= memberList.findIndex(el=> el.id===id)
         onRemoveMember(index);
+        setShowSearch(false);
+        setMemberToDisplay('');
     }
 
     const dispayMemebr =()=>{
@@ -40,7 +57,7 @@ import { MemberSearch } from '../memberSearch';
         <div className={classes.removeMember}>
             <h1>Remove Member</h1>
             <div className={classes.removeMemberSearch}>
-                <MemberSearch memberTodispay={searchResult}/>
+                {!showSearch&&<MemberSearch memberTodispay={searchResult}/>}
             </div>
             <div className={classes.removeMemberDisplay}>
                 {dispayMemebr()}

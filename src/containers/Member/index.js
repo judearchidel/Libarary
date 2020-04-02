@@ -72,7 +72,7 @@ export const MemberDetails = (props) =>{
             <span>{total}</span>
             </div>
         </div>)
-}
+    }
 
     return (
         <Fragment>
@@ -94,8 +94,6 @@ export const MemberDetails = (props) =>{
             </div>
             {routes}
         </Fragment>
-        
-
     )
 }
 

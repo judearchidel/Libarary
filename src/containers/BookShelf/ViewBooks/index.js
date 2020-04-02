@@ -1,15 +1,18 @@
-import React, { useState } from './node_modules/react';
-import { useSelector } from './node_modules/react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './index.module.scss';
 import {BookSearch} from '../searchbook/index';
 import {Hoc} from '../../../hoc/hoc';
 import { SearchCard } from '../../../components/UI/SearchCard';
+import { Link } from 'react-router-dom';
 
 export const ViewBooks = (props) =>{
     const books                                     = useSelector(state=> state.book);
     const [bookSearchResult,setBookSearchResult]    = useState('');
     const isBooksAvailable = books.length;
-    
+
     const RenderBooksTable=()=>{
         const  mapBookRows = books.map(el=>{
             return <tr key={el.id}>
@@ -21,8 +24,16 @@ export const ViewBooks = (props) =>{
                     <td>{el.Discription}</td>
                     <td>{el.Price}</td>
                     <td>{el.issueCount}</td>
+                    <td><Link to={{
+                        pathname: "/removebook",
+                        search:"?" + el.id
+                        }}>
+                            <button><FontAwesomeIcon icon={faTrashAlt} className={classes.Icon}/></button>
+                        </Link>
+                    </td>
             </tr>
         })
+        
         return <div>
             {searchBookAndDisplay()}
             <table className={classes.bookTable}>
@@ -36,6 +47,7 @@ export const ViewBooks = (props) =>{
                         <th>Discription</th>
                         <th>Price</th>
                         <th>issued Count</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody className={classes.bookTableBody}>

@@ -27,10 +27,21 @@
         width: 40%;
         margin: auto;
       }
-      
+      button{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        .Icon{
+          color: #cc0a0a;
+          font-size: 15px;
+          padding: 5px;
+          background-color: transparent;
+        }
+      }
       .searchResult{
         padding: 20px;
-        width: fit-content;
+        width: 30%;
         margin: auto;
         margin-top: 10px;
         justify-content: center;

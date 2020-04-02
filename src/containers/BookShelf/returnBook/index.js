@@ -3,7 +3,7 @@ import {MemberSearch} from '../../Member/memberSearch/index';
 import * as actions from '../../../_store/action/index';
 import { useSelector, connect } from 'react-redux';
 import classes from './index.module.scss';
-import { Hoc } from '../../../hoc/hoc';
+import { SearchCard } from '../../../components/UI/SearchCard';
 
 
 export const InitialReturnBook= (props)=>{
@@ -43,10 +43,12 @@ export const InitialReturnBook= (props)=>{
                 issuedBookIds = <p>No Books Issued</p>
             }  
             return <div className={classes.returnMember}>
-                        <p>Name: {returnState.memberToreturn.Name}</p>
-                        <p>Member ID: {returnState.memberToreturn.id}</p>
-                        {issuedBookIds}
-                        {displaySelectedBook()}  
+                        <SearchCard>
+                            <p>Name: {returnState.memberToreturn.Name}</p>
+                            <p>Member ID: {returnState.memberToreturn.id}</p>
+                            {issuedBookIds}
+                            {displaySelectedBook()}  
+                        </SearchCard> 
                     </div>
         }
     }
@@ -68,11 +70,11 @@ export const InitialReturnBook= (props)=>{
         if(returnState.bookToReturn){
             book = (
                 <div className={classes.selectedBook}>
-                    <p>Book name: {returnState.bookToReturn.BookName}</p>
-                    <p>Author:  {returnState.bookToReturn.Author}</p>
-                    <p>Book ID: {returnState.bookToReturn.id}</p>
-                    <p>Price: {returnState.bookToReturn.Price}</p>
-                    <button onClick={()=>returnBookd()}>confirm Return</button>    
+                        <p>Book name: {returnState.bookToReturn.BookName}</p>
+                        <p>Author:  {returnState.bookToReturn.Author}</p>
+                        <p>Book ID: {returnState.bookToReturn.id}</p>
+                        <p>Price: {returnState.bookToReturn.Price}</p>
+                        <button onClick={()=>returnBookd()}>confirm Return</button> 
                 </div>)
         }
         return book;
@@ -93,7 +95,7 @@ export const InitialReturnBook= (props)=>{
                 {displaySearchresult()}
             </div>
         )
-    }
+}
 
 const mapDispatchToProps = (dispatch)=>{
     return{
